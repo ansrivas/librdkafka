@@ -8,8 +8,8 @@ ENV LIBRDKAFKA=v0.9.5
 
 RUN apk --update add --virtual build-dependencies gcc bash python-dev build-base git \
   && git clone https://github.com/edenhill/librdkafka.git \
-  && git checkout ${LIBRDKAFKA} \
   && cd /root/librdkafka \
+  && git checkout ${LIBRDKAFKA} \
   && /root/librdkafka/configure \
   && make \
   && make install \
