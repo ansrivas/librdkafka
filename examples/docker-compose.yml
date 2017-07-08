@@ -1,0 +1,24 @@
+version: '2'
+services:
+  python-producer-s:
+    image: ansrivas/librdkafka:latest
+    network_mode: host
+    container_name: python-producer-c
+    build: .
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    network_mode: host
+    container_name: zookeeper_test
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 22181
+      ZOOKEEPER_TICK_TIME: 2000
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    network_mode: host
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: localhost:22181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:19092
+    depends_on:
+      - zookeeper
+    container_name: kafka_test
