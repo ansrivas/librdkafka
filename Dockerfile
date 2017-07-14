@@ -1,7 +1,5 @@
 FROM alpine:3.6
 
-RUN apk add --update --no-cache python py-pip
-
 WORKDIR /root
 
 ENV LIBRDKAFKA=v0.9.5
