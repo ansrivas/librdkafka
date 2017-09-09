@@ -2,7 +2,7 @@ FROM alpine:3.6
 
 WORKDIR /root
 
-ENV LIBRDKAFKA=v0.9.5
+ENV LIBRDKAFKA=v0.11.0
 
 RUN apk --update add --virtual build-dependencies gcc bash python-dev build-base git \
   && git clone https://github.com/edenhill/librdkafka.git \
